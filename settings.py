@@ -7,11 +7,11 @@
 # 邮箱配置信息
 ##
 # 发送者
-SENDER = '1258636566@qq.com'
+SENDER = '123456789@qq.com'
 # 授权码
-PASSWORD = 'kgnbgyjtbmxjjdag'
+PASSWORD = 'kgnbgyjtbfsdmxjjdag'
 # 接收者
-RECEIVER = '1209108465@qq.com'
+RECEIVER = '987654321@qq.com'
 # smtp服务器
 MAIL_HOST = "smtp.qq.com"
 
