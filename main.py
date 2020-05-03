@@ -26,7 +26,7 @@ def spider():
             # 支持多个key
             for k in KEYWORDS:
                 url = INIT_URL.format(k)
-                response = requests.get(url=url, headers=HEADERS).content.decode('utf8')
+                response = requests.get(url=url, headers=HEADERS, verify=False).content.decode('utf8')
                 # 解析
                 parse(response, mail_html)
             # 发邮件
