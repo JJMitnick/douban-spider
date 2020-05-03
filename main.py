@@ -8,11 +8,13 @@ import datetime
 import time
 
 import requests
+import urllib3
 from bs4 import BeautifulSoup
-from settings import *
 
 from mail import Mail
+from settings import *
 
+urllib3.disable_warnings()
 
 mail = Mail()
 url_set = set()
