@@ -16,7 +16,6 @@ from settings import *
 
 urllib3.disable_warnings()
 
-mail = Mail()
 url_set = set()
 
 
@@ -37,6 +36,7 @@ def spider():
                 subject = '，'.join(k for k in KEYWORDS)
                 # 邮件内容
                 html = '<br>'.join(m for m in mail_html)
+                mail = Mail()
                 mail.send(receiver=RECEIVER, subject=subject, html=html)
             time.sleep(SLEEP_TIME)
         except:
