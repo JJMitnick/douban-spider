@@ -21,6 +21,8 @@ url_set = set()
 
 def spider():
     while True:
+        # 爬虫休息时间，单位：秒
+        sleep_time = random.randint(100, 300)
         try:
             # 邮件内容包含豆瓣的title和url
             mail_html = []
@@ -28,8 +30,11 @@ def spider():
             for k in KEYWORDS:
                 url = INIT_URL.format(k)
                 response = requests.get(url=url, headers=HEADERS, verify=False).content.decode('utf8')
+                if '异常请求' in response:
+                    time.sleep(sleep_time*100000)
                 # 解析
                 parse(response, mail_html)
+                time.sleep(random.randint(10, 30))
             # 发邮件
             if len(mail_html) != 0:
                 # 主题
@@ -37,8 +42,8 @@ def spider():
                 # 邮件内容
                 html = '<br>'.join(m for m in mail_html)
                 mail = Mail()
-                mail.send(receiver=RECEIVER, subject=subject, html=html)
-            time.sleep(SLEEP_TIME)
+                mail.send(receiver=RECEIVER, subject=subject[0:10], html=html)
+            time.sleep(sleep_time)
         except:
             pass
 
